@@ -1,0 +1,176 @@
+\begin{thebibliography}{10}
+\providecommand{\bibauthor}[1]{#1}
+\providecommand{\bibeditor}[1]{#1}
+\providecommand{\bibtranslator}[1]{#1}
+\providecommand{\bibtitle}[1]{#1}
+\providecommand{\bibbooktitle}[1]{#1}
+\providecommand{\bibjournal}[1]{#1}
+\providecommand{\bibmark}[1]{#1}
+\providecommand{\bibcountry}[1]{#1}
+\providecommand{\bibpatentid}[1]{#1}
+\providecommand{\bibedition}[1]{#1}
+\providecommand{\biborganization}[1]{#1}
+\providecommand{\bibaddress}[1]{#1}
+\providecommand{\bibpublisher}[1]{#1}
+\providecommand{\bibinstitution}[1]{#1}
+\providecommand{\bibschool}[1]{#1}
+\providecommand{\bibvolume}[1]{#1}
+\providecommand{\bibnumber}[1]{#1}
+\providecommand{\bibversion}[1]{#1}
+\providecommand{\bibpages}[1]{#1}
+\providecommand{\bibmodifydate}[1]{#1}
+\providecommand{\bibcitedate}[1]{#1}
+\providecommand{\bibyear}[1]{#1}
+\providecommand{\bibdate}[1]{#1}
+\providecommand{\biburl}[1]{\newline\url{#1}}
+
+\bibitem{wikipedia_moores_law}
+\bibauthor{{Wikipedia contributors}}\@. \bibtitle{{Moore's
+  law}}\bibmark{[EB/OL]}\@. \bibpublisher{Wikipedia, The Free Encyclopedia}\@,
+  \bibyear{2015} \bibmodifydate{(2015/06/14)} \bibcitedate{[2015/06/15]}\@.
+  \newline\url{https://en.wikipedia.org/wiki/Moore%27s_law}\@.
+
+\bibitem{moore2015declare}
+\bibauthor{{Rachel Courtland}}\@. \bibtitle{{Gordon Moore: The Man Whose Name
+  Means Progress}}\bibmark{[EB/OL]}\@. \bibpublisher{IEEE spectrum}\@,
+  \bibyear{2015} \bibmodifydate{(2015/03/30)} \bibcitedate{[2015/06/15]}\@.
+  \newline\url{http://spectrum.ieee.org/computing/hardware/gordon-moore-the-man-whose-name-means-progress}\@.
+
+\bibitem{wikipedia_gpu}
+\bibauthor{{Wikipedia contributors}}\@. \bibtitle{{Graphics Processing
+  Unit}}\bibmark{[EB/OL]}\@. \bibpublisher{Wikipedia, The Free Encyclopedia}\@,
+  \bibyear{2016} \bibmodifydate{(2015/06/14)} \bibcitedate{[2016/05/10]}\@.
+  \newline\url{https://en.wikipedia.org/wiki/Graphics_processing_unit#cite_note-1}\@.
+
+\bibitem{brainchip2014}
+\bibauthor{SERVICE R~F}\@. \bibtitle{The brain chip}\bibmark{[J/OL]}\@.
+  \bibjournal{Science}\@, \bibyear{2014}\@,
+  \bibvolume{345}\bibnumber{(6197)}\thinspace{}\textnormal{:
+  }\bibpages{614\thinspace{}\textnormal{--}\thinspace{}616}\@.
+  \newline\url{http://science.sciencemag.org/content/345/6197/614}\@.
+
+\bibitem{Chen2014DianNao}
+\bibauthor{CHEN T\@, DU Z\@, SUN N, et~al}\@. \bibtitle{DianNao: a
+  small-footprint high-throughput accelerator for ubiquitous
+  machine-learning}\bibmark{[J]}\@. \bibjournal{Acm Sigplan Notices}\@,
+  \bibyear{2014}\@, \bibvolume{49}\bibnumber{(4)}\thinspace{}\textnormal{:
+  }\bibpages{269\thinspace{}\textnormal{--}\thinspace{}284}\@.
+
+\bibitem{Lu2014An}
+\bibauthor{LU\@, JUNJIE}\@. \bibtitle{An Analog VLSI Deep Machine Learning
+  Implementation}\bibmark{[J]}\@. \bibjournal{Eecs.utk.edu}\@,
+  \bibyear{2014}\@.
+
+\bibitem{standford_machine_learning_cs229}
+\bibauthor{{CS department, Standford University}}\@. \bibtitle{{Machine
+  Learning CS229 Material}}\bibmark{[EB/OL]}\@. \bibyear{2016}
+  \bibmodifydate{(2016/05/11)} \bibcitedate{[2016/05/15]}\@.
+  \newline\url{http://cs229.stanford.edu/materials.html}\@.
+
+\bibitem{mitchell1997machine}
+\bibauthor{MITCHELL T}\@. \bibbooktitle{Machine Learning}\bibmark{[M]}\@.
+  \bibaddress{New York}\thinspace{}\textnormal{: }\bibpublisher{McGraw-Hill}\@,
+  \bibyear{1997}\@.
+
+\bibitem{wikipedia_BGFS_algorithm}
+\bibauthor{{Wikipedia contributors}}\@. \bibtitle{{BGFS
+  algorithm}}\bibmark{[EB/OL]}\@. \bibyear{2016} \bibmodifydate{(2016/05/11)}
+  \bibcitedate{[2016/05/15]}\@.
+  \newline\url{https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm}\@.
+
+\bibitem{wikipedia_perceptron}
+\bibauthor{{Wikipedia contributors}}\@.
+  \bibtitle{{Perceptron}}\bibmark{[EB/OL]}\@. \bibyear{2016}
+  \bibmodifydate{(2016/05/11)} \bibcitedate{[2016/05/15]}\@.
+  \newline\url{https://en.wikipedia.org/wiki/Perceptron}\@.
+
+\bibitem{deep_learning_ufldl}
+\bibauthor{{CS department, Standford University}}\@. \bibtitle{{Deep Learning
+  Tutorial}}\bibmark{[EB/OL]}\@. \bibyear{2016} \bibmodifydate{(2016/05/11)}
+  \bibcitedate{[2016/05/15]}\@.
+  \newline\url{http://deeplearning.stanford.edu/wiki/index.php/%E5%8F%8D%E5%90%91%E4%BC%A0%E5%AF%BC%E7%AE%97%E6%B3%95}\@.
+
+\bibitem{Duda2001Pattern}
+\bibauthor{DUDA R~O\@, HART P~E\@, STORK D~G}\@. \bibtitle{Pattern
+  classification, second edition}\bibmark{[J]}\@, \bibyear{2001}\@.
+
+\bibitem{bellman1957dynamic}
+\bibauthor{BELLMAN R}\@. \bibtitle{Dynamic Programming Princeton University
+  Press}\bibmark{[J]}\@. \bibjournal{Princeton, NJ}\@, \bibyear{1957}\@.
+
+\bibitem{bengio2009learning}
+\bibauthor{BENGIO Y}\@. \bibtitle{Learning deep architectures for
+  AI}\bibmark{[J]}\@. \bibjournal{Foundations and trends{\textregistered} in
+  Machine Learning}\@, \bibyear{2009}\@,
+  \bibvolume{2}\bibnumber{(1)}\thinspace{}\textnormal{:
+  }\bibpages{1\thinspace{}\textnormal{--}\thinspace{}127}\@.
+
+\bibitem{JMLR:v15:srivastava14a}
+\bibauthor{SRIVASTAVA N\@, HINTON G\@, KRIZHEVSKY A, et~al}\@.
+  \bibtitle{Dropout: A Simple Way to Prevent Neural Networks from
+  Overfitting}\bibmark{[J/OL]}\@. \bibjournal{Journal of Machine Learning
+  Research}\@, \bibyear{2014}\@, \bibvolume{15}\thinspace{}\textnormal{:
+  }\bibpages{1929\thinspace{}\textnormal{--}\thinspace{}1958}\@.
+  \newline\url{http://jmlr.org/papers/v15/srivastava14a.html}\@.
+
+\bibitem{hinton2006fast}
+\bibauthor{HINTON G~E\@, OSINDERO S\@, TEH Y-W}\@. \bibtitle{A fast learning
+  algorithm for deep belief nets}\bibmark{[J]}\@. \bibjournal{Neural
+  computation}\@, \bibyear{2006}\@,
+  \bibvolume{18}\bibnumber{(7)}\thinspace{}\textnormal{:
+  }\bibpages{1527\thinspace{}\textnormal{--}\thinspace{}1554}\@.
+
+\bibitem{lee2009convolutional}
+\bibauthor{LEE H\@, GROSSE R\@, RANGANATH R, et~al}\@. \bibtitle{Convolutional
+  deep belief networks for scalable unsupervised learning of hierarchical
+  representations}\bibmark{[C]} //\thinspace{}\bibbooktitle{Proceedings of the
+  26th Annual International Conference on Machine Learning}\@.
+  \bibyear{2009}\thinspace{}\textnormal{:
+  }\bibpages{609\thinspace{}\textnormal{--}\thinspace{}616}\@.
+
+\bibitem{Hyv2009Natural}
+\bibauthor{HYVäRINEN A\@, HURRI J\@, HOYER P~O}\@. \bibtitle{Natural Image
+  Statistics}\bibmark{[J]}\@. \bibjournal{Computational Imaging and Vision}\@,
+  \bibyear{2009}\@.
+
+\bibitem{Arel2009DeSTIN}
+\bibauthor{AREL I\@, COOP R}\@. \bibtitle{DeSTIN: A Scalable Deep Learning
+  Architecture with Application to High-Dimensional Robust Pattern
+  Recognition}\bibmark{[C]} //\thinspace{}\@. \bibyear{2009}\@.
+
+\bibitem{Young2014Hierarchical}
+\bibauthor{YOUNG S~R\@, DAVIS A\@, MISHTAL A, et~al}\@. \bibtitle{Hierarchical
+  spatiotemporal feature extraction using recurrent online
+  clustering}\bibmark{[J]}\@. \bibjournal{Pattern Recognition Letters}\@,
+  \bibyear{2014}\@, \bibvolume{37}\bibnumber{(1)}\thinspace{}\textnormal{:
+  }\bibpages{115\thinspace{}\textnormal{--}\thinspace{}123}\@.
+
+\bibitem{Young2010A}
+\bibauthor{YOUNG S\@, AREL I\@, KARNOWSKI T~P, et~al}\@. \bibtitle{A Fast and
+  Stable Incremental Clustering Algorithm.}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{International Conference on Information
+  Technology}\@. \bibyear{2010}\thinspace{}\textnormal{:
+  }\bibpages{204\thinspace{}\textnormal{--}\thinspace{}209}\@.
+
+\bibitem{Deubel1996Postsaccadic}
+\bibauthor{DEUBEL H\@, SCHNEIDER W~X\@, BRIDGEMAN B}\@. \bibtitle{Postsaccadic
+  target blanking prevents saccadic suppression of image
+  displacement}\bibmark{[J]}\@. \bibjournal{Vision Research}\@,
+  \bibyear{1996}\@, \bibvolume{36}\bibnumber{(7)}\thinspace{}\textnormal{:
+  }\bibpages{985\thinspace{}\textnormal{--}\thinspace{}96}\@.
+
+\bibitem{Karnowski2012Deep}
+\bibauthor{KARNOWSKI T~P}\@. \bibtitle{Deep Machine Learning with
+  Spatio-Temporal Inference}\bibmark{[J]}\@, \bibyear{2012}\@.
+
+\bibitem{CIFAR-10}
+\bibauthor{{Alex Krizhevsky}}\@. \bibtitle{{The CIFAR-10
+  dataset}}\bibmark{[EB/OL]}\@. \bibyear{2016} \bibcitedate{[2016/05/22]}\@.
+  \newline\url{https://www.cs.toronto.edu/~kriz/cifar.html}\@.
+
+\bibitem{pythonDeSTIN}
+\bibauthor{{tedyhabtegebrial}}\@. \bibtitle{{Github Python DeSTIN
+  Code}}\bibmark{[EB/OL]}\@. \bibyear{2016} \bibcitedate{[2016/05/22]}\@.
+  \newline\url{https://github.com/opencog/python-destin}\@.
+
+\end{thebibliography}

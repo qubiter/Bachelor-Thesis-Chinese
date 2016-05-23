@@ -1,0 +1,172 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+%% 南京大学物理学院 2012级 曾培 本科毕业论文
+%% Github主页：https://github.com/qubiter
+
+%%
+%% 使用 njuthesis 文档类生成南京大学本科生毕业论文的示例文档
+%% 作者：张楚珩，zhangchuheng123 (at) live (dot) com
+%% 个人主页: http://sealzhang.tk
+%%
+
+
+\documentclass[winfonts]{njuthesis}
+\usepackage{CJKulem}  %for Chinese underline
+\usepackage{listings} %for code highlights \begin{lstlisting}
+\usepackage{xcolor}   %for listings color
+\usepackage{setspace} %for space setting
+%\usepackage[colorlinks,linkcolor=red]{hyperref} %for hyperlink
+
+
+%\includeonly{chapter5/chapter5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置论文的中文封面
+
+% 论文标题
+\title{一种深度学习网络的测试与专用电路设计}
+
+% 论文作者姓名
+\author{曾培}
+% 论文作者学号
+\studentid{121120171}
+% 导师姓名职称
+\supervisor{王中风\;教授}
+% 论文作者的学科与专业方向
+\major{物理学院\;物理系}
+% 论文作者的研究方向
+\researchfield{深度学习\; 数字电路}
+% 论文的定稿日期，需设置年、月、日。此属性可选，默认值为最后一次编译时的日期，精确到日。
+% \date{2013年5月1日}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 设置论文的英文封面
+
+% 论文的英文标题
+\englishtitle{Algorithm Test and A Digital Circuit Design of The DeSTIN Deep Learning Frame}
+% 论文作者姓名的拼音
+\englishauthor{ZENG Pei}
+% 导师姓名职称的英文
+\englishsupervisor{Professor Zhongfeng Wang}
+% 论文作者所在院系的英文名称
+\englishdepartment{Department of Physics}
+% 论文作者所在学校或机构的英文名称。此属性可选，默认值为``Nanjing University''。
+\englishinstitute{Nanjing University}
+% 论文完成日期的英文形式，默认最后一次编译的时间
+% \englishdate{May 1, 2013}
+
+\begin{document}
+
+% listings setting
+\lstset{numbers=left,
+numberstyle=\tiny,
+frame=single,
+keywordstyle=\color{blue!70}, 
+commentstyle=\color{red!50!green!50!blue!50},
+rulesepcolor=\color{red!20!green!20!blue!20}, 
+breaklines = true, 
+basicstyle=\footnotesize\ttfamily,
+xleftmargin=1em,xrightmargin=1em,aboveskip=1em,
+framexleftmargin=5pt,
+framexrightmargin=5pt,
+%escapeinside=`，
+}
+
+
+% 制作中文封面
+\maketitle
+% 制作英文封面
+\makeenglishtitle
+
+% 论文的中文摘要
+\begin{abstract}
+我们的研究基于一种新型的深度学习框架：深度空时关系推断网络DeSTIN（Deep SpatioTemporal Inference Network）-- 这种框架基于一种神经网络结构（Deep Belief Neural Network），通过实时的k-means聚类方法提取特征，逐步提取出高维输入信息内部的有效全局特征，并对其进行监督学习，从而对新的输入进行有效预测。这种神经网络的优点在于数据的实时更新，可以反映出数据的空时依赖关系。\\
+
+我们首先研究了DeSTIN算法在算法层次上面的具体实现方法，进行了参数调试；然后进行了相应的定点数测试；之后再利用集成电路设计的方法，设计出一种专用的数字电路进行这种神经网络结构的实现。我们通过Verilog HDL进行编程，设计出专用数字电路的结构，进行了相应的仿真工作，确认了我们的设计的合理性。 
+
+我们探讨了其在图像处理上的应用，尤其是对于视频中的动作识别 （空时相关的模式）进行深入研究。
+
+
+% 中文关键词。关键词之间用中文全角分号隔开，末尾无标点符号。
+\keywords{深度学习；模式识别；专用电路}
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 论文的英文摘要
+\begin{englishabstract}
+Our research is based on a brand new frame for deep machine learning(DML): the Deep SpatioTemporal Inference Network(DeSTIN). The DeSTIN is constructed based on the former work of Deep Belief Neural Network and Deep Neural Network. We adopt the online k-means clustering method for the neuron learning process, and with a network of clustering structure, we can extract the feature from different level, which can be used for latter pattern recogition.
+
+The Strengthness of this algorithm is that 1) It's much faster and feasible comparing to other kinds of Deep Neural network; 2) It can extract the spatialtempral information effectively; 3) It's relatively easy for transplant to digital circuit.
+
+We first did some research on the algorithm hierarchy: how it can work on some normal learning database; and check it's robustness and limitation on each kind of learning problem; then we finished the fixed point test with MATLAB; finally we designed the digital circuit's structure, programmed with Verilog, and do the simulation on Modelsim platform.
+
+% 英文关键词。关键词之间用英文半角逗号隔开，末尾无符号。
+\englishkeywords{Deep Machine Learning, Pattern Recognition, Field Programmable Gate Array}
+\end{englishabstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 论文的前言，应放在目录之前，中英文摘要之后
+%
+\begin{preface}
+（初稿暂无序言部分的内容）
+
+
+\vspace{1cm}
+\begin{flushright}
+曾培\\
+2016年5月22日于南京大学
+\end{flushright}
+
+\end{preface}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 生成论文目录
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 生成插图清单。如无需插图清单则可注释掉下述语句。
+\listoffigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 生成附表清单。如无需附表清单则可注释掉下述语句。
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 开始正文部分
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\include{chapter1/chapter1}
+\include{chapter2/chapter2}
+\include{chapter3/chapter3}
+\include{chapter4/chapter4}
+
+
+\bibliography{reference}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 致谢，应放在结论之后
+\begin{acknowledgement}
+%粗略版的
+感谢大学四年期间帮助过我的所有老师，同学！
+
+感谢父母尊重我的选择和一贯鼓励的态度！
+
+感谢答辩期间林军老师、陈凯老师的指导与讨论！
+
+感谢室友的互帮互助，鼓励支持！
+
+感谢大学前三年给予了我莫大指导的王思慧老师，周慧君老师！
+
+感谢在物理学院指导了我两年时间的王漱明老师！
+
+感谢汪华老师，刘洁老师的无微不至的关照！
+\end{acknowledgement}
+
+
+
+\include{chapter5/chapter5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

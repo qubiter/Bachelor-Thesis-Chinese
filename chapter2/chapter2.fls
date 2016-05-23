@@ -1,0 +1,13 @@
+PWD G:/自己的文件/大四下/Thesis/My Thesis/chapter2
+INPUT c:/texlive/2015/texmf.cnf
+INPUT c:/texlive/2015/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT ./chapter2.tex
+OUTPUT chapter2.log
+INPUT c:/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
+INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT chapter2.bbl
+INPUT chapter2.bbl
+INPUT c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmti10.tfm

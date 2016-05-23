@@ -1,0 +1,47 @@
+\BOOKMARK [0][-]{cover.0}{中文封面}{}% 1
+\BOOKMARK [0][-]{abstract.0}{中文摘要}{}% 2
+\BOOKMARK [0][-]{englishabstract.0}{英文摘要}{}% 3
+\BOOKMARK [0][-]{chapter*.1}{前 言}{}% 4
+\BOOKMARK [0][-]{chapter*.2}{目 录}{}% 5
+\BOOKMARK [0][-]{chapter*.3}{插图清单}{}% 6
+\BOOKMARK [0][-]{chapter*.4}{附表清单}{}% 7
+\BOOKMARK [0][-]{chapter.1}{1 绪论}{}% 8
+\BOOKMARK [1][-]{section.1.1}{1.1 研究背景}{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.2}{1.2 研究目的与意义}{chapter.1}% 10
+\BOOKMARK [2][-]{subsection.1.2.1}{1.2.1 现有解决方法}{section.1.2}% 11
+\BOOKMARK [2][-]{subsection.1.2.2}{1.2.2 本研究的目的与意义}{section.1.2}% 12
+\BOOKMARK [0][-]{chapter.2}{2 机器学习与深度学习简介}{}% 13
+\BOOKMARK [1][-]{section.2.1}{2.1 机器学习}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 机器学习简介}{section.2.1}% 15
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 监督学习}{section.2.1}% 16
+\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 非监督学习}{section.2.1}% 17
+\BOOKMARK [1][-]{section.2.2}{2.2 深度学习}{chapter.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 卷积神经网络}{section.2.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 深度信念网络}{section.2.2}% 20
+\BOOKMARK [0][-]{chapter.3}{3 DeSTIN算法的介绍与测试}{}% 21
+\BOOKMARK [1][-]{section.3.1}{3.1 DeSTIN算法介绍}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 DeSTIN算法的理论基础}{section.3.1}% 23
+\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 DeSTIN算法的整体框架}{section.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.1.3}{3.1.3 单个神经元的online k-means聚类算法}{section.3.1}% 25
+\BOOKMARK [1][-]{section.3.2}{3.2 DeSTIN算法测试}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 单个神经元的聚类测试}{section.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 MNIST手写数字识别测试}{section.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 CIFAR物体识别测试与改进}{section.3.2}% 29
+\BOOKMARK [0][-]{chapter.4}{4 专用电路设计与仿真}{}% 30
+\BOOKMARK [1][-]{section.4.1}{4.1 定点数聚类测试}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 定点数测试中注意的修改}{section.4.1}% 32
+\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 定点数测试结果}{section.4.1}% 33
+\BOOKMARK [1][-]{section.4.2}{4.2 硬件结构设计}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 总体结构设计示意图}{section.4.2}% 35
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 神经单元模块内部结构}{section.4.2}% 36
+\BOOKMARK [1][-]{section.4.3}{4.3 ModelSim仿真结果}{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 现有问题与下一步的研究计划}{section.4.3}% 38
+\BOOKMARK [0][-]{chapter*.64}{参考文献}{}% 39
+\BOOKMARK [0][-]{chapter*.65}{致 谢}{}% 40
+\BOOKMARK [0][-]{chapter.5}{5 附录}{}% 41
+\BOOKMARK [1][-]{section.5.1}{5.1 第三章算法测试：MNIST数字识别MATLAB代码}{chapter.5}% 42
+\BOOKMARK [1][-]{section.5.2}{5.2 第四章硬件设计：部分Verilog代码}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 NeuronUnit：框架代码}{section.5.2}% 44
+\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 NeuronUnit：测试代码}{section.5.2}% 45
+\BOOKMARK [2][-]{subsection.5.2.3}{5.2.3 Cordic除法器：框架代码}{section.5.2}% 46
+\BOOKMARK [2][-]{subsection.5.2.4}{5.2.4 Cordic除法器：测试代码}{section.5.2}% 47

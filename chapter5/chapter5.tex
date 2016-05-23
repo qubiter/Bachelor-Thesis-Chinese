@@ -1,0 +1,700 @@
+\chapter{附录}\label{chapter_appendix}
+\graphicspath{{chapter5/figure/}}
+
+鉴于部分代码过于冗长，笔者并不附出；笔者已将其托管到自己的Github上：(https://github.com/qubiter)，有兴趣可以前去访问。
+
+\section{第三章算法测试：MNIST数字识别MATLAB代码}
+\begin{spacing}{1}
+\begin{lstlisting}[language=Matlab][deletekeywords={input, beta, gamma}]
+%% DeSTIN Algorithm
+%% STEP I: DeSTIN Network Training
+%% Data Input
+% the MNIST data is included in the MNIST.mat, where the X is the training
+% image, y is the corresponding label.
+load('MNIST.mat');
+
+% Select Picture for Training
+T = 5000; % Training Sample Number
+sel = randperm(size(X, 1));
+sel = sel(1:T);
+
+% Display data
+% Used the displayData.m function
+displayData(X(sel,1:400))
+
+fprintf('Program paused. Press enter to continue.\n');
+%pause;
+
+%% Initializing
+
+% Online Clustering Learning Rate
+alpha = 0.05; beta = 0.05;
+
+% Starvation Rate
+gamma = 0.992;
+
+%{
+Parameters for one neuron: 
+1. Centroid attributes: mu, sigma2:   I-by-J matrix
+2. Belief State:   J-by-1 vector
+3. Input data:     I-by-1 vector
+4. Starvation Trace:   J-by-1 vector
+%}
+
+% We adopt 'struct' structure for each neuron
+Dim_Neu = [125, 125, 41; 25, 25, 25];
+for k = 1:3
+    for i = 1:2^(k-1)
+        for j = 1:2^(k-1)
+            n = (4^(k-1)-1)/3+(2^(k-1))*(i-1)+j;
+            Neuron(n).input = zeros(Dim_Neu(1,k),1);
+            Neuron(n).belief = zeros(Dim_Neu(2,k),1);
+            Neuron(n).mu = 0.4 + 0.2 * rand(Dim_Neu(1,k),Dim_Neu(2,k));
+            Neuron(n).sigma2 = ones(Dim_Neu(1,k),Dim_Neu(2,k));
+            Neuron(n).starve = ones(Dim_Neu(2,k),1);
+        end
+    end
+end
+
+%% DeSTIN Training Process
+% turn on the Training switch
+training = 1;
+
+% set a 'scanning sequence' for the MNIST data
+scan = [0,0;0,1;0,2;0,3;0,4;1,4;1,3;1,2;1,1;1,0;2,0;2,1;...
+2,2;2,3;2,4;3,4;3,3;3,2;3,1;3,0;4,0;4,1;4,2;4,3;4,4];
+S = size(scan,1);
+  
+for t = 1:T % training sample sequence
+    sample = reshape(X(sel(t),:), 20, 20);
+    % scanning the sample with the specific sequence
+    for s = 1:S  %scanning sequence
+        sx = scan(s,1); sy = scan(s,2);
+        for k = 3:-1:1  %for different layer
+            for i = 1:2^(k-1)  % x label
+                for j = 1:2^(k-1) % y label
+                    n = (4^(k-1)-1)/3+(2^(k-1))*(i-1)+j; % calculating the neuron order number
+                    if s == 1
+                        Neuron(n).belief = 0.1 * ones(Dim_Neu(2,k),1); % reset the belief state at the beginning of each scanning; the belief state will be re-scaled later
+                    end
+                    % data transition
+                    if k == 3  % for the bottom layer
+                        A = reshape(sample(4*i-3+sx:4*i+sx,4*j-3+sy:4*j+sy),16,1);
+                        % scaling the belief according to samle's mean value
+                        Neuron(n).belief = Neuron(n).belief * ( mean(sample(:))./mean(Neuron(n).belief(:)) );
+                        % input signal = spatial input + feedback input
+                        Neuron(n).input = [A ; Neuron(n).belief];
+                    else   % for the upper layer
+                        % the spatial input from lower layer
+                        B = [Neuron(((4^k-1)/3+2^k*((2*i-1-1)))+(2*j-1)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1-1)))+(2*j)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1)))+(2*j-1)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1)))+(2*j)).belief];
+                        %scaling
+                        Neuron(n).belief = Neuron(n).belief * ( mean(sample(:))./mean(Neuron(n).belief(:)) );
+                        Neuron(n).input = [B ; Neuron(n).belief];
+                    end
+                    % DeSTIN learning process
+                    % Used the OnlineClustering function
+                    [Neuron(n).belief,Neuron(n).mu,Neuron(n).sigma2,Neuron(n).starve] = OnlineClustering(...
+                        Neuron(n).input,Neuron(n).mu,Neuron(n).sigma2,Neuron(n).starve, alpha,beta,gamma,training);
+                end
+            end
+        end
+    end
+end
+
+fprintf('Training completed. Press enter to continue.\n');
+%pause;
+
+%% Step II: 2-layer Neural Network Training
+%% Sample Rechoose
+T = 5000; % Neural Network Training sample number
+sel = randperm(size(X, 1));
+sel = sel(1:T);
+
+% Display data
+displayData(X(sel,1:400))
+
+fprintf('Program paused. Press enter to continue.\n');
+%pause;
+
+%% DeSTIN usage: Acquire the output belief
+% Turn off the training switch
+training = 0;
+
+% DeSTIN Learning Process
+% belief state output to be collected
+Belief = zeros(T, 21, 100);
+for t = 1:T
+    sample = reshape(X(sel(t),:), 20, 20);
+    % scanning the sample with the specific sequence
+    for s = 1:S
+        sx = scan(s,1); sy = scan(s,2);
+        for k = 3:-1:1
+            for i = 1:2^(k-1)
+                for j = 1:2^(k-1)
+                    n = (4^(k-1)-1)/3+(2^(k-1))*(i-1)+j;
+                    if s == 1
+                        Neuron(n).belief = 0.1 * ones(Dim_Neu(2,k),1);
+                    end
+                    % data transition
+                    if k == 3
+                        A = reshape(sample(4*i-3+sx:4*i+sx,4*j-3+sy:4*j+sy),16,1);
+                        % scaling
+                        Neuron(n).belief = Neuron(n).belief * ( mean(sample(:))./mean(Neuron(n).belief(:)) );
+                        Neuron(n).input = [A ; Neuron(n).belief];
+                    else
+                        B = [Neuron(((4^k-1)/3+2^k*((2*i-1-1)))+(2*j-1)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1-1)))+(2*j)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1)))+(2*j-1)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1)))+(2*j)).belief];
+                        %scaling
+                        Neuron(n).belief = Neuron(n).belief * ( mean(sample(:))./mean(Neuron(n).belief(:)) );
+                        Neuron(n).input = [B ; Neuron(n).belief];
+                    end
+                    % DeSTIN learning process
+                    [Neuron(n).belief,Neuron(n).mu,Neuron(n).sigma2,Neuron(n).starve] = OnlineClustering(...
+                        Neuron(n).input,Neuron(n).mu,Neuron(n).sigma2,Neuron(n).starve, alpha,beta,gamma,training);
+                    % belief state storage
+                    if mod(s,6) == 0
+                       % Concatenate the 6,12,18,24th Belief state for storage
+                       Belief(t,n,25*fix(s/6)-24:25*fix(s/6)) = (Neuron(n).belief)';
+                    end
+                end
+            end
+        end
+ %{
+        % **OUTPUT BELIEF STATE STORAGE
+        % Collect the Belief output of specific position
+        if mod(s,6)==0
+            % Concatenate the 6,12,18,24th Belief state for storage
+            Belief(t,25*fix(s/6)-24:25*fix(s/6)) = (Neuron(1).belief)'; 
+        end
+%}
+    end
+end
+
+Belief = reshape(Belief,T,2100);
+fprintf('Learning completed. Press enter to continue.\n');
+%pause;
+
+%% Initialize the Neural Network Parameters
+input_layer_size  = 2100;   % Input Images of Neuron output
+hidden_layer_size = 169;   % 20 hidden units
+num_labels = 10;          % 10 labels, from 1 to 10  (note that we have mapped "0" to label 10)
+
+% Weight Parameter for the 2-layer neural network
+initial_Theta1 = randInitializeWeights(input_layer_size, hidden_layer_size);
+initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
+% Unroll parameters 
+initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
+
+% Regularization Factor
+lambda = 1;
+
+%% Neural Network Training
+% Iteration options
+options = optimset('MaxIter', 200);
+
+% Create "short hand" for the cost function to be minimized
+costFunction = @(p) nnCostFunction(p, ...
+                                   input_layer_size, ...
+                                   hidden_layer_size, ...
+                                   num_labels, Belief, y(sel), lambda);
+
+% Convex Optimization
+[nn_params, cost] = fmincg(costFunction, initial_nn_params, options);
+
+% Obtain Theta1 and Theta2 back from nn_params
+Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
+                 hidden_layer_size, (input_layer_size + 1));
+
+Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...
+                 num_labels, (hidden_layer_size + 1));
+
+fprintf('Program paused. Press enter to continue.\n');
+%pause;
+
+% Visualize the weight
+%fprintf('\nVisualizing Neural Network... \n')
+
+%displayData(Theta1(:, 2:end));
+
+fprintf('\nProgram paused. Press enter to continue.\n');
+%pause;
+
+%% STEP III : Predictment Judge
+%% Select Picture for Prediction
+T = 1000; % Prediction Sample Number
+sel = randperm(size(X, 1));
+sel = sel(1:T);
+
+%% Belief Calculation
+% DeSTIN Learning Process
+% belief state output to be collected
+% exactly as the former DeSTIN part
+training = 0;
+Belief = zeros(T,21,100);
+for t = 1:T
+    sample = reshape(X(sel(t),:), 20, 20);
+    % scanning the sample with the specific sequence
+    for s = 1:S
+        sx = scan(s,1); sy = scan(s,2);
+        for k = 3:-1:1
+            for i = 1:2^(k-1)
+                for j = 1:2^(k-1)
+                    n = (4^(k-1)-1)/3+(2^(k-1))*(i-1)+j;
+                    if s == 1
+                        Neuron(n).belief = 0.1 * ones(Dim_Neu(2,k),1);
+                    end
+                    % data transition
+                    if k == 3
+                        A = reshape(sample(4*i-3+sx:4*i+sx,4*j-3+sy:4*j+sy),16,1);
+                        % scaling
+                        Neuron(n).belief = Neuron(n).belief * ( mean(sample(:))./mean(Neuron(n).belief(:)) );
+                        Neuron(n).input = [A ; Neuron(n).belief];
+                    else
+                       B = [Neuron(((4^k-1)/3+2^k*((2*i-1-1)))+(2*j-1)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1-1)))+(2*j)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1)))+(2*j-1)).belief;...
+                            Neuron(((4^k-1)/3+2^k*((2*i-1)))+(2*j)).belief];
+                        %scaling
+                        Neuron(n).belief = Neuron(n).belief * ( mean(sample(:))./mean(Neuron(n).belief(:)) );
+                        Neuron(n).input = [B ; Neuron(n).belief];
+                    end
+                    % DeSTIN learning process
+                    [Neuron(n).belief,Neuron(n).mu,Neuron(n).sigma2,Neuron(n).starve] = OnlineClustering(...
+                        Neuron(n).input,Neuron(n).mu,Neuron(n).sigma2,Neuron(n).starve, alpha,beta,gamma,training);
+                    % belief state storage
+                    if mod(s,6) == 0
+                       % Concatenate the 6,12,18,24th Belief state for storage
+                       Belief(t,n,25*fix(s/6)-24:25*fix(s/6)) = (Neuron(n).belief)';
+                    end
+                end
+            end
+        end
+        %{
+        % Collect the Belief output of specific position
+        if mod(s,6)==0
+            Belief(t,25*fix(s/6)-24:25*fix(s/6)) = (Neuron(1).belief)'; 
+        end
+        %}
+    end
+end
+Belief = reshape(Belief,T,2100);
+% Used perdict.m script
+pred = predict(Theta1, Theta2, Belief);
+fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y(sel))) * 100);
+toc;
+
+
+\end{lstlisting}
+\end{spacing}
+
+
+\section{第四章硬件设计：部分Verilog代码}
+\subsection{NeuronUnit：框架代码}
+\begin{spacing}{1}
+\begin{lstlisting}[language=Verilog]
+`timescale 1ns / 100ps
+
+module neuronunit(dist, norm_dist, divider_flag, in, mu_ini, sigma2_ini, en_input, en_renew, en_divide, renew_flag, ini_para, clk, rst);
+  output signed [15:0] dist;
+  output signed [15:0] norm_dist;
+  output divider_flag; //divider_flag
+  input signed [15:0] in;
+  input signed [15:0] mu_ini;
+  input signed [15:0] sigma2_ini;
+  input en_input; //sample input control
+  input en_renew; //renew process indicator
+  input en_divide; //divider work signal
+  input renew_flag; //whether new value or old one
+  input ini_para; //for mu sigma2 initialization
+  input clk;
+  input rst;
+  
+  reg signed [15:0] in_reg;
+  reg signed [15:0] mu;
+  reg signed [15:0] sigma2;
+  reg signed [15:0] diff_reg;
+  reg signed [15:0] diff2_reg;
+  //reg signed [15:0] dist;
+  //reg signed [15:0] norm_dist;
+  //reg divider_flag; //divider flag
+  
+  wire signed [15:0] diff;
+  wire signed [15:0] diff2;
+  wire signed [15:0] mu0;
+  wire signed [15:0] sigma20;
+  wire signed [15:0] mu_new;
+  wire signed [15:0] sigma2_new;
+  ///wire signed  [15:0] diff2_diff; //diff2_reg - sigma2
+  wire divider_flag;
+  
+  //mu,sigma2 data input control
+  assign mu0 = ini_para? mu_ini : mu_new;
+  assign sigma20 = ini_para? sigma2_ini : sigma2_new;
+  
+  //pure logical calculation
+  assign diff = in_reg - mu;
+  assign dist = diff2;
+  //pure logical multiplier
+  fixed_width_multiply_16bits multiplier(.a(diff), .b(diff), .c(diff2));
+  
+  //renew rule execution
+  assign mu_new = renew_flag? (mu + (diff_reg >>> 3 )) : mu;
+  ///assign diff2_diff = diff2_reg - sigma2;
+  assign sigma2_new = renew_flag? (sigma2 + (diff2_reg - sigma2) / 8 ) : sigma2;
+  
+  //examplify the divider
+  cordic_div_smaller divider(.cordic_div_flag(divider_flag),.quotient(norm_dist),.dividend(diff2_reg),.division(sigma2),.clk(clk),.rst(rst),.cordic_div_en(en_divide));
+  
+  //register transition description
+  always @(posedge clk or posedge rst)
+  begin
+    if (rst) begin in_reg = 16'd0; mu = 16'd0; sigma2 = 16'd0; diff_reg = 16'd0; diff2_reg = 16'd0; /*divider_flag = 0; norm_dist = 16'd0;*/ end
+    else
+      begin
+        //diff,diff2 to register
+        diff_reg <= diff;
+        diff2_reg <= diff2;
+        
+        //input register renew
+        if (en_input) in_reg <= in;
+        
+        //mu sigma2 register renew
+        if (en_renew || ini_para) begin mu <= mu0; sigma2 <= sigma20; end
+      end
+  end
+endmodule
+\end{lstlisting}
+\end{spacing}
+
+\subsection{NeuronUnit：测试代码}
+
+\begin{spacing}{1}
+\begin{lstlisting}[language=Verilog]
+`timescale 1ns / 100ps
+
+module neuronunit_test();
+  
+  
+  wire signed [15:0] dist;
+  wire signed [15:0] norm_dist;
+  wire divider_flag;
+  
+  reg clk;
+  reg rst;
+  reg en_input;
+  reg en_renew;
+  reg en_divide;
+  reg renew_flag;
+  reg ini_para;
+  
+  reg signed [15:0] in;
+  reg signed [15:0] mu_ini;
+  reg signed [15:0] sigma2_ini;
+  
+  
+  neuronunit neuronunit_exam(.dist(dist), .norm_dist(norm_dist), .divider_flag(divider_flag), .in(in), .mu_ini(mu_ini), .sigma2_ini(sigma2_ini), 
+  .en_input(en_input), .en_renew(en_renew), .en_divide(en_divide), .renew_flag(renew_flag), .ini_para(ini_para), .clk(clk), .rst(rst));
+  
+  initial
+  begin
+    // initialzation
+    clk = 0;
+    rst = 0;
+    en_input = 0;
+    en_renew = 0;
+    en_divide = 0;
+    renew_flag = 0;
+    ini_para = 0;
+    in = 0;
+    mu_ini = 0;
+    sigma2_ini = 0;
+    
+    // reset
+    #10
+    rst = 1;
+    #10
+    rst = 0;
+    
+    // initialize mu, sigma2: 0.5, 1
+    #10
+    ini_para = 1;
+    #10
+    mu_ini = 8192;
+    sigma2_ini = 16384;
+    #10
+    ini_para = 0;
+    mu_ini = 0;
+    sigma2_ini = 0;
+    
+    // 1st input:0
+    #10
+    in = 0;
+    #10
+    en_input = 1;
+    #10
+    en_input = 0;
+    
+    // 1st renew part
+    #10
+    renew_flag = 1;
+    #10
+    en_renew = 1;
+    #10
+    en_renew = 0;
+    
+    // 1st divide part
+    #10
+    en_divide = 1;
+    #10
+    en_divide = 0;
+    #140
+    
+    
+    // 2nd input:0
+    #10
+    in = 0;
+    #10
+    en_input = 1;
+    #10
+    en_input = 0;
+    
+    // 2nd renew part
+    #10
+    renew_flag = 0;
+    #10
+    en_renew = 1;
+    #10
+    en_renew = 0;
+    
+    // 2nd divide part at least #140
+    #10
+    en_divide = 1;
+    #10
+    en_divide = 0;
+    #140
+    
+    // 3rd input:0.2
+    #10
+    in = 3277;
+    #10
+    en_input = 1;
+    #10
+    en_input = 0;
+    
+    // 3rd renew part
+    #10
+    renew_flag = 1;
+    #10
+    en_renew = 1;
+    #10
+    en_renew = 0;
+    
+    // 3rd divide part at least #140
+    #10
+    en_divide = 1;
+    #10
+    en_divide = 0;
+    #140
+
+    #100
+    $stop;
+  end
+  
+  //clock
+  initial
+  begin
+  forever
+    #5 clk = ~clk;
+  end
+endmodule
+
+\end{lstlisting}
+\end{spacing}
+
+
+\subsection{Cordic除法器：框架代码}
+\begin{spacing}{1}
+\begin{lstlisting}[language=Verilog]
+`timescale 1ns / 100ps
+module cordic_div_smaller(cordic_div_flag, quotient, dividend, division, clk, rst, cordic_div_en);
+  parameter M = 1 ; // dividend shift bits (<<) 
+  parameter N = 13; // division shift bits (>>) M + N = FractionLength
+  parameter COUNT = 14; //Maximum count number
+  
+  output reg signed [15:0] quotient;
+  output reg cordic_div_flag;
+  
+  input signed [15:0] dividend;
+  input signed [15:0] division;
+  input clk;
+  input rst;
+  input cordic_div_en;
+  
+  reg signed [43:0] y; //if result collapsed,try to alloc more bits.
+  wire signed [43:0] y_buf;
+  wire signed [27:0] y_mv;
+  wire signed [27:0] y_mv2;
+  
+  reg [27:0] x;
+  wire signed [27:0] x_mv;
+  wire signed [27:0] x_mv2;
+  
+  reg signed [15:0] z;
+  
+  integer count;
+  integer state;
+  
+  //extend the dividend's bit number
+  assign y_mv = {dividend, 12'h0};
+  assign y_mv2 = y_mv <<< M;  // redifine y_mv to get a right representation of z
+  assign x_mv = {division, 12'h0};
+  assign x_mv2 = x_mv >>> N;  // redifine x_mv to get a right representation of z
+  assign y_buf = (y_mv2[27])?{16'hffff, y_mv2}:{16'h0000, y_mv2}; 
+  
+  always@(posedge clk or negedge rst)
+  begin
+    if(rst)begin
+      state <= 0;
+      count <= COUNT;
+      x <= 0;
+      y <= 0;
+      z <= 0;
+    end
+    else begin
+      case(state)
+        0: begin
+          cordic_div_flag <= 0;
+          if(cordic_div_en) begin
+            x <= x_mv2;
+            y <= y_buf;
+            z <= 0;
+            state <= 1;
+          end
+        end
+        1: begin
+          if(count >= 0)begin
+            count <= count - 1;
+            if(y==0)begin
+              y <= y;
+              z <= z;
+            end
+            else if(y<0)begin
+              z <= z - (1<<count);
+              y <= y + (x<<count);
+            end
+            else begin
+              z <= z + (1<<count);
+              y <= y - (x<<count);
+            end 
+          end
+          else begin
+            count <= COUNT;
+            quotient <= z;
+            cordic_div_flag <= 1;
+            state <= 0;
+          end
+        end
+      endcase
+    end
+  end
+  
+endmodule
+
+\end{lstlisting}
+\end{spacing}
+
+
+\subsection{Cordic除法器：测试代码}
+\begin{spacing}{1}
+\begin{lstlisting}[language=Verilog]
+`timescale 1ns / 100ps
+
+module cordic_div_test_small();
+  
+  
+  wire signed [15:0] quotient;
+  wire cordic_div_flag;
+  
+  reg signed [15:0] dividend;
+  reg signed [15:0] division;
+  reg clk;
+  reg rst;
+  reg cordic_div_en;
+  cordic_div_smaller div_exam(.cordic_div_flag(cordic_div_flag), .quotient(quotient), .dividend(dividend), .division(division), .clk(clk), .rst(rst), .cordic_div_en(cordic_div_en));
+  
+  initial
+  begin
+    clk = 0;
+    rst = 0;
+    cordic_div_en = 0;
+    dividend = 0;
+    division = 0;
+    #10
+    rst = 1;
+    #10
+    rst = 0;
+    // 1st: 0.8/1.5  8738
+    #10
+    dividend = 13107;
+    division = 24576;
+    #10
+    cordic_div_en = 1;
+    #10
+    cordic_div_en = 0;
+    // 2nd: 0.03/0.8  629
+    #180
+    dividend = 492;
+    division = 13107;
+    #10
+    cordic_div_en = 1;
+    #10
+    cordic_div_en = 0;
+    // 3rd: 0.001/0.8  21
+    #180
+    dividend = 16;
+    division = 13107;
+    #10
+    cordic_div_en = 1;
+    #10
+    cordic_div_en = 0;
+    // 4th: 0.00001/0.8  0
+    #180
+    dividend = 0;
+    division = 13107;
+    #10
+    cordic_div_en = 1;
+    #10
+    cordic_div_en = 0;
+    // 5th: -0.01/0.8  -209
+    #180
+    dividend = -164;
+    division = 13107;
+    #10
+    cordic_div_en = 1;
+    #10
+    cordic_div_en = 0;
+    // 6th: 0.024/0.049  7809
+    #180
+    dividend = 393;
+    division = 817;
+    #10
+    cordic_div_en = 1;
+    #10
+    cordic_div_en = 0;
+    
+    #200
+    $stop;
+  end
+  initial
+  begin
+  forever
+    #5 clk = ~clk;
+  end
+endmodule
+\end{lstlisting}
+\end{spacing}

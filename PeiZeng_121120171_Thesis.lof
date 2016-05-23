@@ -1,0 +1,62 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {{1}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{1}}{\ignorespaces Moore定律:CPU中随着时间指数级增长的晶体管规模\relax }}{1}{figure.caption.5}
+\contentsline {figure}{\numberline {{1}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{2}}{\ignorespaces TrueNorth类脑结构实现原理\relax }}{2}{figure.caption.6}
+\contentsline {figure}{\numberline {{1}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{3}}{\ignorespaces "寒武纪"系列电脑采用的硬件模块设计\relax }}{3}{figure.caption.7}
+\contentsline {figure}{\numberline {{1}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{4}}{\ignorespaces Online Clustering算法的模拟神经元架构\relax }}{4}{figure.caption.8}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{1}}{\ignorespaces 拟合的原数据点，真实的Sine函数\relax }}{6}{figure.caption.9}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{2}}{\ignorespaces 多项式“拟合”：对真实情况进行预测、推断\relax }}{6}{figure.caption.10}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{3}}{\ignorespaces Sigmoid函数的形状\relax }}{11}{figure.caption.11}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{4}}{\ignorespaces Cost函数与h的关系(y=1)\relax }}{12}{figure.caption.12}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{5}}{\ignorespaces Cost函数与h的关系(y=0)\relax }}{12}{figure.caption.13}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{6}}{\ignorespaces 二层神经网络结构示意\relax }}{14}{figure.caption.14}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{7}}{\ignorespaces k-means聚类分析过程：“×”形代表聚类中心。\relax }}{20}{figure.caption.15}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{8}}{\ignorespaces k-means聚类之难：交叠处(x=2.5)到底属于哪一个聚类？\relax }}{22}{figure.caption.16}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{9}}{\ignorespaces 主元分析对于Gaussian分布数据的影响\relax }}{24}{figure.caption.17}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{10}}{\ignorespaces 自编码神经网络结构示意\relax }}{24}{figure.caption.18}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{11}}{\ignorespaces 部分连接网络示意\relax }}{27}{figure.caption.19}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{12}}{\ignorespaces 二维离散有限卷积示意\relax }}{28}{figure.caption.20}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{13}}{\ignorespaces 通过卷积进行输入层到中间层的连接\relax }}{29}{figure.caption.21}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{14}}{\ignorespaces 典型的卷积神经网络结构(LeNet)\relax }}{30}{figure.caption.22}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{15}}{\ignorespaces 受限Boltzmann机示意\relax }}{31}{figure.caption.23}
+\contentsline {figure}{\numberline {{2}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{16}}{\ignorespaces DBN架构示意\relax }}{33}{figure.caption.24}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{1}}{\ignorespaces DeSTIN算法的架构\relax }}{37}{figure.caption.25}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{2}}{\ignorespaces DeSTIN神经元的抽象结构\relax }}{38}{figure.caption.26}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{3}}{\ignorespaces 聚类算法1：参数以及初始化\relax }}{39}{figure.caption.27}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{4}}{\ignorespaces 聚类算法2：聚类判断过程\relax }}{39}{figure.caption.28}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{5}}{\ignorespaces 聚类算法3：聚类学习过程\relax }}{40}{figure.caption.29}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{6}}{\ignorespaces 聚类算法4：信度状态计算过程\relax }}{41}{figure.caption.30}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{7}}{\ignorespaces 聚类算法5：饥饿值的引入\relax }}{42}{figure.caption.31}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{8}}{\ignorespaces 聚类测试1：理想状况，结果图\relax }}{44}{figure.caption.33}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{9}}{\ignorespaces 聚类测试2：常规测试，样本图\relax }}{45}{figure.caption.35}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{10}}{\ignorespaces 聚类测试2：常规测试，结果图\relax }}{45}{figure.caption.36}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{11}}{\ignorespaces 聚类测试3：起始点移动，结果图\relax }}{46}{figure.caption.38}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{12}}{\ignorespaces 聚类测试3-2：起始点大移动，结果图\relax }}{47}{figure.caption.40}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{13}}{\ignorespaces 聚类测试4：学习参数调整，结果图\relax }}{48}{figure.caption.41}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{14}}{\ignorespaces 聚类测试5：聚类数目变多，结果图\relax }}{49}{figure.caption.43}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{15}}{\ignorespaces 聚类测试5-2：聚类数目变少，结果图\relax }}{50}{figure.caption.45}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{16}}{\ignorespaces DeSTIN结构与流水线\relax }}{51}{figure.caption.47}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{17}}{\ignorespaces 测试过程1：无监督网训练\relax }}{52}{figure.caption.48}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{18}}{\ignorespaces 测试过程2：有监督网训练\relax }}{52}{figure.caption.49}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{19}}{\ignorespaces 测试过程3：预测过程\relax }}{52}{figure.caption.50}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{20}}{\ignorespaces “视觉扫描”识别的扫描顺序\relax }}{53}{figure.caption.51}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{21}}{\ignorespaces MNIST测试的数字样本\relax }}{54}{figure.caption.52}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{22}}{\ignorespaces MNIST测试DeSTIN网络输出的信度状态\relax }}{54}{figure.caption.53}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{23}}{\ignorespaces 饥饿速率对准确度的影响\relax }}{55}{figure.caption.54}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{24}}{\ignorespaces 学习速率对准确度的影响\relax }}{55}{figure.caption.55}
+\contentsline {figure}{\numberline {{3}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{25}}{\ignorespaces CIFAR数据集图例\relax }}{56}{figure.caption.56}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {{4}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{1}}{\ignorespaces 定点测试：常规测试，结果图\relax }}{65}{figure.caption.57}
+\contentsline {figure}{\numberline {{4}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{2}}{\ignorespaces Online Clustering整体框架\relax }}{67}{figure.caption.59}
+\contentsline {figure}{\numberline {{4}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{3}}{\ignorespaces Neuron Unit外部引脚示意图\relax }}{68}{figure.caption.60}
+\contentsline {figure}{\numberline {{4}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{4}}{\ignorespaces Neuron Unit内部框架示意图\relax }}{69}{figure.caption.61}
+\contentsline {figure}{\numberline {{4}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{5}}{\ignorespaces 除法器的仿真结果\relax }}{70}{figure.caption.62}
+\contentsline {figure}{\numberline {{4}\kern .07em\rule [.5ex]{.4em}{.15ex}\kern .07em{6}}{\ignorespaces 信度计算的仿真结果\relax }}{70}{figure.caption.63}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

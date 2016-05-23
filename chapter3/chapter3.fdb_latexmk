@@ -1,0 +1,21 @@
+# Fdb version 3
+["bibtex chapter3"] 1463846359 "chapter3.aux" "chapter3.bbl" "chapter3" 1463846359
+  "chapter3.aux" 1463846260 13370 0a484d463af953012e234301a89fbc90 ""
+  "chapter3.bcf" 0 -1 0 ""
+  "reference.bib" 1463819265 8604 e79d72f51ee12e00572764459d4e0859 ""
+  (generated)
+  "chapter3.bbl"
+  "chapter3.blg"
+["pdflatex"] 1463807333 "chapter3.tex" "chapter3.pdf" "chapter3" 1463807333
+  "./chapter3.tex" 1463807329 3221 070a77d0fcb3a5c9dcc282755d58a593 ""
+  "c:/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1451049264 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
+  "c:/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1451047812 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "c:/texlive/2015/texmf-dist/web2c/texmf.cnf" 1451050088 31985 3b2aa1e4e73426e2011ec5231ac92e0f ""
+  "c:/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1451054385 3850849 a96f09d8178a793201070cdf40494fa9 ""
+  "c:/texlive/2015/texmf.cnf" 1451054294 497 7277663fd190ea5a4fe922b182dc7be2 ""
+  "chapter3.aux" 1463774383 5102 03618384fd199bccd7579d60d2a81d52 ""
+  "chapter3.bbl" 1463811194 0 d41d8cd98f00b204e9800998ecf8427e "bibtex chapter3"
+  "chapter3.tex" 1463807329 3221 070a77d0fcb3a5c9dcc282755d58a593 ""
+  (generated)
+  "chapter3.pdf"
+  "chapter3.log"
